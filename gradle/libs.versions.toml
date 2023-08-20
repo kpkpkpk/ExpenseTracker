@@ -1,24 +1,56 @@
 [versions]
-agp = "8.2.0-alpha15"
+agp = "8.1.0"
+dagger = "2.47"
+kapt = "1.9.0"
 kotlin = "1.8.21"
 core-ktx = "1.10.1"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
 appcompat = "1.6.1"
+kotlinx-coroutines-core = "1.7.3"
+lifecycle-viewmodel-ktx = "2.6.1"
 material = "1.9.0"
 constraintlayout = "2.1.4"
+detekt = "1.22.0"
+viewBindingDelegate = "1.5.9"
+#Network
+okhttp = "4.11.0"
+retrofit = "2.9.0"
+retrofitKotlinxSerialConverter = "1.0.0"
 
 [libraries]
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines-core" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+ui-viewBindingDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate", version.ref = "viewBindingDelegate" }
+# Utils
+util-detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+util-detektPlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+# Networking
+networking-okHttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+networking-okHttpLoggingInterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+
+# Networking Retrofit
+networking-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+networking-retrofitKotlinxSerialConverter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerialConverter" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kapt" }
 
+[bundles]
+network = ["networking-okHttp", "networking-okHttpLoggingInterceptor",
+    "networking-retrofitKotlinxSerialConverter", "networking-retrofit"]
